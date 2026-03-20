@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
 	base: "./",
 	build: {
-		outDir: path.resolve(__dirname, "../dist"),
+		outDir: "dist",
 		emptyOutDir: true,
 		minify: "esbuild",
 		target: "esnext",
@@ -25,6 +25,7 @@ export default defineConfig({
 			"@Types": path.resolve(__dirname, "src/types"),
 			"@Composables": path.resolve(__dirname, "src/composables"),
 			"@Components": path.resolve(__dirname, "src/components"),
+			"@Utils": path.resolve(__dirname, "src/utils"),
 		},
 	},
 	plugins: [vue()],
