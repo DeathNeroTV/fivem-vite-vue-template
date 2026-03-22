@@ -1,13 +1,10 @@
 RegisterNUICallback(Config.closeEvent, function(data, cb)
     SetNuiFocus(false, false)
-    SendNUIMessage({ action = Config.closeEvent })
+    SendNUIMessage({ action = Config.CloseEvent })
     cb('ok')
 end)
 
-RegisterCommand(Config.openCommand, function()
+RegisterCommand(Config.CommandName, function()
     SetNuiFocus(true, true)
-    SendNUIMessage({ action = Config.openCommand })
-    SendNUIMessage({
-        action = 'open'
-    })
+    SendNUIMessage({ action = Config.OpenEvent })
 end)

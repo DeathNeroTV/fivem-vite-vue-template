@@ -1,4 +1,5 @@
 Config = {
-    openCommand = 'openUI',
-    closeEvent = 'closeUI'
+    CommandName = 'resourcename',
+    OpenEvent = 'openUI',
+    CloseEvent = 'closeUI'
 }
