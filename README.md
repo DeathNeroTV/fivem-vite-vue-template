@@ -62,7 +62,7 @@ npm run build
 ## 🎮 Nutzung
 
 ```bash
-/openUI
+/commandName
 ```
 
 Config (shared):
