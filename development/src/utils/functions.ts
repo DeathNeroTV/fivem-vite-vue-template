@@ -1,4 +1,4 @@
-import { Config } from "@/composables/config";
+import { Config } from "@Composables/config";
 
 export function useUtils() {
 	function isValidAction(action: string) {

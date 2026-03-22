@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import { onMounted, onUnmounted, ref } from "vue";
-	import { Config } from "./composables/config";
-	import { useUtils } from "./utils/functions";
+	import { Config } from "@Composables/config";
+	import { useUtils } from "@Utils/functions";
 
 	const isVisible = ref<boolean>(Config.debugUI);
 	const { isValidAction } = useUtils();
