@@ -278,6 +278,7 @@ app.mount("#app");
 - 🔹 Events zentral definieren (`shared/config.lua`)
 - 🔹 UI strikt von Game-Logik trennen
 - 🔹 Composables für Wiederverwendbarkeit nutzen
+- 🔹 fxmanifest_default.lua in fxmanifest.lua umbenennen
 - 🔹 Animationen sparsam einsetzen (Performance!)
 - 🔹 Charts nur bei Bedarf rendern (Lifecycle beachten)
 
