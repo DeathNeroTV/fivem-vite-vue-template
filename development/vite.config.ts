@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
 	base: "./",
 	build: {
-		outDir: "dist",
+		outDir: path.resolve(__dirname, "../dist"),
 		emptyOutDir: true,
 		minify: "esbuild",
 		target: "esnext",
