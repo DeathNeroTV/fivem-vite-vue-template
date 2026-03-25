@@ -8,9 +8,9 @@
             </div>
             <div class="flex items-center justify-end gap-2">
                 <!-- 🔍 Suche -->
-                <font-awesome-icon v-if="props.searchable !== false" icon="magnifying-glass" class="h-10 w-10 p-2 text-2xl" />
+                <font-awesome-icon v-if="props.searchable" icon="magnifying-glass" class="h-10 w-10 p-2 text-2xl" />
                 <input
-                    v-if="props.searchable !== false"
+                    v-if="props.searchable"
                     v-model="search"
                     type="text"
                     placeholder="Suchen..."
@@ -90,8 +90,8 @@
         data: any[];
         columns: Column[];
         idKey?: string;
-        searchable?: boolean;
-        paginated?: boolean;
+        searchable?: true;
+        paginated?: true;
     }>();
 
     const emits = defineEmits(['rowDblclick']);

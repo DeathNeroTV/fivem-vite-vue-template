@@ -6,6 +6,7 @@
         leftLabel?: string;
         rightLabel?: string;
         colored?: true;
+        disabled?: true;
     }>();
 
     const emits = defineEmits<{
@@ -22,6 +23,7 @@
         <button
             type="button"
             @click="toggled = !toggled"
+            :disabled="disabled"
             :class="{
                 'bg-green-500/95': toggled && colored,
                 'bg-red-500/95': !toggled && colored,
