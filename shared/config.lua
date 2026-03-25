@@ -4,6 +4,8 @@ Config = {
         NUI = {
             Open = 'resourceName:nui:open',
             Close = 'resourceName:nui:close'
-        }
+        },
+        Server = {},
+        Client = {}
     }
 }
