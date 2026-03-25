@@ -4,7 +4,9 @@ export const Config = {
 			Open: "resourceName:nui:open",
 			Close: "resourceName:nui:close",
 		},
-		Client: {}
+		Client: {
+			Close: "resourceName:client:close"
+		}
 	},
 	debugUI: true,
 };

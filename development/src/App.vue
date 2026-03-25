@@ -1,21 +1,32 @@
 <script setup lang="ts">
 	import { onMounted, onUnmounted, ref } from "vue";
 	import { Config } from "@Composables/config";
-	import { useUtils } from "@Utils/functions";
-
+	import { useNui } from "@Composables/useNui";
+	
+	const { send, listen } = useNui();
 	const isVisible = ref<boolean>(Config.debugUI);
-	const { isValidAction } = useUtils();
 
-	function handleMessage(event: MessageEvent) {
-		const data = event.data;
-		if (!isValidAction(data.action)) return;
-		isVisible.value = data.action === Config.openUIEvent;
-	}
+	const openListener = ref<() => void>(() => {});
+	const closeListener = ref<() => void>(() => {});
+	
+	const handleKeyPress = (e: KeyboardEvent) => {
+		if (e.key !== 'Escape') return;
+		send(Config.Events.Client.Close)
+	};
+	
+	onMounted(() => {
+		openListener.value = listen(Config.Events.NUI.Open, () => isVisible.value = true);
+		closeListener.value = listen(Config.Events.NUI.Close, () => isVisible.value = false);
+		window.addEventListener('keydown', handleKeyPress);
+	});
 
-	onMounted(() => window.addEventListener("message", handleMessage));
-	onUnmounted(() => window.removeEventListener("message", handleMessage));
+	onUnmounted(() => {
+		openListener.value();
+		closeListener.value();
+		window.removeEventListener('keydown', handleKeyPress);
+	});
 </script>
 
 <template>
-	<div class="w-screen h-screen flex items-center justify-center text-white"></div>
+	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white bg-black/60"></div>
 </template>

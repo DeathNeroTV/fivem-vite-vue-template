@@ -1,7 +1,7 @@
-RegisterNUICallback(Config.Events.NUI.Close, function(data, cb)
+RegisterNUICallback(Config.Events.Client.Close, function(data, cb)
     SetNuiFocus(false, false)
     SendNUIMessage({ action = Config.Events.NUI.Close })
-    cb('ok')
+    cb({})
 end)
 
 RegisterCommand(Config.CommandName, function()

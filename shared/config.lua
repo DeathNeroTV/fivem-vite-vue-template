@@ -6,6 +6,8 @@ Config = {
             Close = 'resourceName:nui:close'
         },
         Server = {},
-        Client = {}
+        Client = {
+            Close = 'resourceName:client:close'
+        }
     }
 }
