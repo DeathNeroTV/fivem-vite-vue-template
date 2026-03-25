@@ -92,8 +92,12 @@ npm run build
 ```lua
 Config = {
     CommandName = 'resourcename',
-    OpenEvent = 'openUI',
-    CloseEvent = 'closeUI'
+    Events = {
+        NUI = {
+            Open = 'resourceName:nui:open',
+            Close = 'resourceName:nui:close'
+        }
+    }
 }
 ```
 
@@ -276,7 +280,7 @@ RegisterCommand(Config.CommandName, function()
     SetNuiFocus(true, true)
 
     SendNUIMessage({
-        action = Config.OpenEvent,
+        action = Config.Events.NUI.Open,
         payload = {
             name = playerData.charinfo.firstname .. " " .. playerData.charinfo.lastname,
             job = playerData.job.name,
@@ -295,6 +299,7 @@ end)
 - ⚠️ Dev Mode ≠ FiveM Runtime
 - ⚠️ Event-Namen müssen exakt übereinstimmen
 - ⚠️ UI ohne Fokus → keine Interaktion
+- ⚠️ fxmanifest_default.lua in fxmanifest.lua umbenennen
 
 ---
 
@@ -303,7 +308,6 @@ end)
 - 🔹 Events zentral definieren (`shared/config.lua`)
 - 🔹 UI strikt von Game-Logik trennen
 - 🔹 Composables für Wiederverwendbarkeit nutzen
-- 🔹 fxmanifest_default.lua in fxmanifest.lua umbenennen
 - 🔹 Animationen sparsam einsetzen (Performance!)
 - 🔹 Charts nur bei Bedarf rendern (Lifecycle beachten)
 

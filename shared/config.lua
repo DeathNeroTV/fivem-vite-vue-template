@@ -1,6 +1,9 @@
 Config = {
     CommandName = 'resourcename',
-    OpenEvent = 'openUI',
-    CloseEvent = 'closeUI',
-    NuiEvents = {}
+    Events = {
+        NUI = {
+            Open = 'resourceName:nui:open',
+            Close = 'resourceName:nui:close'
+        }
+    }
 }

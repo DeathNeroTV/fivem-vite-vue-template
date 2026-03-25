@@ -1,10 +1,10 @@
-RegisterNUICallback(Config.CloseEvent, function(data, cb)
+RegisterNUICallback(Config.Events.NUI.Close, function(data, cb)
     SetNuiFocus(false, false)
-    SendNUIMessage({ action = Config.CloseEvent })
+    SendNUIMessage({ action = Config.Events.NUI.Close })
     cb('ok')
 end)
 
 RegisterCommand(Config.CommandName, function()
     SetNuiFocus(true, true)
-    SendNUIMessage({ action = Config.OpenEvent })
+    SendNUIMessage({ action = Config.Events.NUI.Open })
 end, false)
