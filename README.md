@@ -245,6 +245,7 @@ onMounted(() => {
 ## ⭐ FontAwesome Setup
 
 ```ts
+// development/src/main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./style.css";
@@ -260,6 +261,30 @@ library.add(fas, far, fab);
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
+```
+
+---
+
+### Qbox (Best Practice)
+
+```lua
+local QBCore = exports['qb-core']:GetCoreObject()
+
+RegisterCommand(Config.CommandName, function()
+    local playerData = QBCore.Functions.GetPlayerData()
+
+    SetNuiFocus(true, true)
+
+    SendNUIMessage({
+        action = Config.OpenEvent,
+        payload = {
+            name = playerData.charinfo.firstname .. " " .. playerData.charinfo.lastname,
+            job = playerData.job.name,
+            grade = playerData.job.grade.name,
+            money = playerData.money.cash
+        }
+    })
+end)
 ```
 
 ---
