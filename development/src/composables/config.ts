@@ -1,5 +1,10 @@
 export const Config = {
-	openUIEvent: "openUI",
-	closeUIEvent: "closeUI",
+	Events: {
+		NUI: {
+			Open: "resourceName:nui:open",
+			Close: "resourceName:nui:close",
+		},
+		Client: {}
+	},
 	debugUI: true,
 };
