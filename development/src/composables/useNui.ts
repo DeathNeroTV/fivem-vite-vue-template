@@ -1,11 +1,11 @@
-type NuiRequest<T = any> = {
+export type NuiRequest<T = any> = {
 	action: string;
 	data?: any;
 	resolve?: (value: T) => void;
 	reject?: (reason?: any) => void;
 };
 
-type NuiListener<T = any> = (data: T) => void;
+export type NuiListener<T = any> = (data: T) => void;
 
 const listeners = new Map<string, Set<NuiListener>>();
 
