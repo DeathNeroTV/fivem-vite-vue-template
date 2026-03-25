@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+/* 🔹 Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+	margin-block: 12px;
+	padding: none;
+}
+
+/* 🔹 Thumb */
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(
+		to bottom,
+		transparent,
+		rgba(163, 163, 163, 0.4),
+		rgba(115, 115, 115, 0.4),
+		transparent
+	);
+	border-radius: 9999px;
+	transition: all 0.2s ease;
+
+	border: 4px solid transparent;
+	background-clip: content-box;
+}
+
+/* 🔹 Hover Effekt */
+::-webkit-scrollbar-thumb:hover {
+	border: 4px solid transparent;
+	background: linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.6), rgba(34, 197, 94, 0.6), transparent);
+	background-clip: content-box;
+}
