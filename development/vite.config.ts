@@ -22,7 +22,6 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			"@Types": path.resolve(__dirname, "src/types"),
 			"@Composables": path.resolve(__dirname, "src/composables"),
 			"@Components": path.resolve(__dirname, "src/components"),
 			"@Utils": path.resolve(__dirname, "src/utils"),
