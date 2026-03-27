@@ -74,7 +74,7 @@
 			case "green":
 				return props.selected
 					? "inset-ring-2 inset-ring-neutral-500 bg-green-600/95"
-					: "bg-blue-700/95 hover:bg-green-600/95";
+					: "bg-green-700/95 hover:bg-green-600/95";
 			case "orange":
 				return props.selected
 					? "inset-ring-2 inset-ring-neutral-500 bg-orange-600/95"
