@@ -106,7 +106,7 @@
 		</div>
 
 		<!-- 🔹 Custom Table Container -->
-		<div class="flex w-full h-full flex-col rounded-xl relative">
+		<div class="flex w-full h-full flex-col rounded-xl relative overflow-hidden">
 			<!-- Header -->
 			<div
 				class="flex w-full h-14 bg-neutral-800/50 rounded-t-xl text-sm text-neutral-300 items-center uppercase sticky top-0 z-10">

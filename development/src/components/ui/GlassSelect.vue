@@ -5,6 +5,7 @@
 	const props = defineProps<{
 		modelValue: any;
 		options: Primitive[] | OptionObject[];
+		label?: string;
 
 		//🔥 optional global image function
 		image?: (value: any) => string;
@@ -50,13 +51,18 @@
 </script>
 
 <template>
-	<div class="grid h-full w-full grid-cols-1 items-center">
+	<div class="flex flex-col gap-1 w-full">
+		<!-- Label -->
+		<span v-if="label" class="text-md text-white pl-2">
+			{{ label }}
+		</span>
+
 		<!-- 🔹 SELECT -->
 		<div class="relative w-full">
 			<!-- Selected -->
 			<div
 				@click="toggled = !toggled"
-				class="flex w-full cursor-pointer items-center justify-between rounded-2xl bg-neutral-950/20 px-4 py-2">
+				class="flex w-full cursor-pointer items-center justify-between rounded-2xl bg-neutral-800/20 px-4 py-2">
 				<span class="flex items-center gap-2">
 					<img v-if="selected?.image" :src="selected?.image" class="h-8 w-8 object-contain" />
 					{{ selected?.label ?? "Auswahl..." }}
@@ -68,7 +74,7 @@
 			<!-- 🔽 Dropdown -->
 			<div
 				v-if="toggled"
-				class="dropdown-scroll absolute z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-2xl bg-neutral-900/95 shadow-lg">
+				class="dropdown-scroll absolute z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-2xl bg-neutral-800/95 shadow-lg">
 				<div
 					v-for="option in normalizedOptions"
 					:key="option.value"

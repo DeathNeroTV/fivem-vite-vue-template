@@ -6,13 +6,13 @@
 	function getColor(type: string) {
 		switch (type) {
 			case "success":
-				return "border-green-500/50 bg-green-500/10";
+				return "outline-green-500/50";
 			case "error":
-				return "border-red-500/50 bg-red-500/10";
+				return "outline-red-500/50";
 			case "warning":
-				return "border-yellow-500/50 bg-yellow-500/10";
+				return "outline-yellow-500/50";
 			default:
-				return "border-blue-500/50 bg-blue-500/10";
+				return "outline-blue-500/50";
 		}
 	}
 
@@ -36,7 +36,7 @@
 			<div
 				v-for="toast in toasts"
 				:key="toast.id"
-				class="pointer-events-auto mb-2 flex items-center gap-3 rounded-xl border bg-neutral-950/60 px-4 py-3 text-white shadow-lg transition-all duration-300"
+				class="pointer-events-auto mb-2 flex items-center gap-3 rounded-xl outline-2 bg-neutral-950/50 px-4 py-3 text-white shadow-lg transition-all duration-300"
 				:class="getColor(toast.type)">
 				<!-- Icon -->
 				<font-awesome-icon :icon="getIcon(toast.type)" class="text-lg opacity-80" />

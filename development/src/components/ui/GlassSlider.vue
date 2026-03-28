@@ -20,15 +20,15 @@
 
 <template>
 	<div class="flex flex-col gap-2">
-		<span v-if="title" class="text-sm">{{ title }}</span>
+		<span v-if="title" class="text-md">{{ title }}</span>
 		<div
-			class="flex items-center gap-3 bg-neutral-800/95 p-2 rounded-xl outline outline-neutral-700/95"
+			class="w-fit gap-3 bg-neutral-800/95 p-2 rounded-xl outline outline-neutral-700/95"
 			:class="{
-				'items-center': (leftLabel && rightLabel) || (!leftLabel && !rightLabel),
-				'items-start': !leftLabel && rightLabel,
-				'items-end': leftLabel && !rightLabel,
+				'flex flex-row items-center': (leftLabel && rightLabel) || (!leftLabel && !rightLabel),
+				'flex flex-row items-start': !leftLabel && rightLabel,
+				'flex flex-row items-end': leftLabel && !rightLabel,
 			}">
-			<span v-if="leftLabel" class="text-sm text-neutral-300">{{ leftLabel }}</span>
+			<span v-if="leftLabel" class="text-end text-md text-neutral-300">{{ leftLabel }}</span>
 			<button
 				type="button"
 				@click="toggled = !toggled"
@@ -38,12 +38,12 @@
 					'bg-red-500/95': !toggled && colored,
 					'bg-neutral-700/95': !colored,
 				}"
-				class="relative inline-flex h-6 min-w-11 items-center cursor-pointer rounded-full transition">
+				class="relative inline-flex h-6 max-w-11 min-w-11 items-center cursor-pointer rounded-full transition">
 				<span
 					class="inline-block h-4 w-4 transform rounded-full bg-white/95 transition"
 					:class="toggled ? 'translate-x-6' : 'translate-x-1'" />
 			</button>
-			<span v-if="rightLabel" class="text-sm text-neutral-300">{{ rightLabel }}</span>
+			<span v-if="rightLabel" class="text-start text-md text-neutral-300">{{ rightLabel }}</span>
 		</div>
 	</div>
 </template>

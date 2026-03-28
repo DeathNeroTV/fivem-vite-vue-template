@@ -29,6 +29,7 @@
 	import type { VariantType } from "../../utils/types";
 
 	const audio = new Audio(new URL("../../../public/sounds/click.wav", import.meta.url).href);
+
 	const isPlaying = ref<boolean>(false);
 
 	const props = defineProps<{
@@ -42,7 +43,9 @@
 		selected?: boolean;
 	}>();
 
-	const emits = defineEmits(["click"]);
+	const emits = defineEmits<{
+		(e: "click", value: PointerEvent): void;
+	}>();
 
 	const variantClass = computed(() => {
 		switch (props.variant) {
