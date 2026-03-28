@@ -18,15 +18,17 @@
 				variantClass,
 				disabled && 'opacity-50 pointer-events-none',
 			]"
-			@click="(e) => emits('click', e)">
+			@click="handleSound">
 			<slot />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import { computed } from "vue";
+	import { computed, ref } from "vue";
 	import type { VariantType } from "../../utils/types";
+
+	const audio = new Audio(new URL('../../../public/sounds/click.mp3', import.meta.url).href);
 
 	const props = defineProps<{
 		tooltip?: string;
@@ -89,4 +91,11 @@
 					: "bg-blue-700/95 hover:bg-yellow-600/95";
 		}
 	});
+
+	const handleSound = (e: PointerEvent) => {
+		if(props.disabled) return;
+		audio.volume = 0.5;
+		audio.play();
+		emits('click', e);
+	};
 </script>

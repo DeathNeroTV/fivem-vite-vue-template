@@ -124,7 +124,7 @@
 						</span>
 					</div>
 				</div>
-				<div v-if="$slots.rowActions" class="px-4 py-3 text-center w-32">Aktionen</div>
+				<div v-if="$slots.rowActions" class="px-4 py-3 text-center min-w-64">Aktionen</div>
 			</div>
 
 			<!-- Scrollbarer Body -->
@@ -132,12 +132,12 @@
 				<div
 					v-for="row in paginatedData"
 					:key="row[idKey]"
-					class="flex w-full h-12 text-center items-center cursor-pointer odd:bg-neutral-700/95 even:bg-neutral-600/95 hover:bg-green-500/20"
+					class="flex w-full h-14 text-center items-center cursor-pointer odd:bg-neutral-700/95 even:bg-neutral-600/95 hover:bg-green-500/20"
 					@dblclick="emits('rowDblclick', row)">
 					<div v-for="col in columns" :key="col.key" class="flex-1 px-4 py-2 text-center">
 						{{ col.format ? col.format(row) : row[col.key] }}
 					</div>
-					<div v-if="$slots.rowActions" class="relative z-50 px-4 py-2 text-center w-32">
+					<div v-if="$slots.rowActions" class="relative z-50 px-4 py-2 text-center min-w-64">
 						<slot name="rowActions" :row="row" />
 					</div>
 				</div>
