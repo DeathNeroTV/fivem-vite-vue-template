@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-	import { computed, ref } from "vue";
+	import { computed } from "vue";
 	import type { VariantType } from "../../utils/types";
 
-	const audio = new Audio(new URL('../../../public/sounds/click.mp3', import.meta.url).href);
+	const audio = new Audio(new URL("../../../public/sounds/click.wav", import.meta.url).href);
 
 	const props = defineProps<{
 		tooltip?: string;
@@ -93,9 +93,9 @@
 	});
 
 	const handleSound = (e: PointerEvent) => {
-		if(props.disabled) return;
+		if (props.disabled) return;
 		audio.volume = 0.5;
 		audio.play();
-		emits('click', e);
+		emits("click", e);
 	};
 </script>

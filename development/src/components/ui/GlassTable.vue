@@ -80,7 +80,7 @@
 </script>
 
 <template>
-	<div class="relative flex flex-col w-full h-full select-none gap-2">
+	<div class="relative flex flex-col w-full h-full select-none gap-5">
 		<!-- 🔹 Toolbar -->
 		<div class="flex w-full items-center justify-between gap-2">
 			<div v-if="paginated" class="flex min-w-48 w-48 items-center gap-2 px-4 py-2">
@@ -106,10 +106,10 @@
 		</div>
 
 		<!-- 🔹 Custom Table Container -->
-		<div class="flex w-full flex-col rounded-xl relative">
+		<div class="flex w-full h-full flex-col rounded-xl relative">
 			<!-- Header -->
 			<div
-				class="flex w-full h-14 bg-neutral-800/50 text-sm text-neutral-300 items-center uppercase sticky top-0 z-10">
+				class="flex w-full h-14 bg-neutral-800/50 rounded-t-xl text-sm text-neutral-300 items-center uppercase sticky top-0 z-10">
 				<div
 					v-for="col in columns"
 					:key="col.key"
@@ -128,7 +128,7 @@
 			</div>
 
 			<!-- Scrollbarer Body -->
-			<div class="flex flex-col w-full h-150 overflow-hidden overflow-y-auto bg-neutral-800/95">
+			<div class="flex flex-col w-full h-full overflow-hidden overflow-y-auto rounded-b-xl bg-neutral-800/95">
 				<div
 					v-for="row in paginatedData"
 					:key="row[idKey]"
