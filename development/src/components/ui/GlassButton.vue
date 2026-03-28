@@ -25,10 +25,11 @@
 </template>
 
 <script setup lang="ts">
-	import { computed } from "vue";
+	import { computed, ref } from "vue";
 	import type { VariantType } from "../../utils/types";
 
 	const audio = new Audio(new URL("../../../public/sounds/click.wav", import.meta.url).href);
+	const isPlaying = ref<boolean>(false);
 
 	const props = defineProps<{
 		tooltip?: string;
@@ -92,10 +93,22 @@
 		}
 	});
 
-	const handleSound = (e: PointerEvent) => {
-		if (props.disabled) return;
-		audio.volume = 0.5;
-		audio.play();
-		emits("click", e);
+	const handleSound = async (e: PointerEvent) => {
+		if (props.disabled || isPlaying.value) return;
+
+		try {
+			isPlaying.value = true;
+
+			audio.currentTime = 0;
+			audio.volume = 0.5;
+
+			await audio.play();
+
+			// warten bis fertig
+			audio.onended = () => (isPlaying.value = false);
+			emits("click", e);
+		} catch (err) {
+			isPlaying.value = false;
+		}
 	};
 </script>
