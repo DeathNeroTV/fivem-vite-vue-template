@@ -25,6 +25,7 @@ export default defineConfig({
 			"@Composables": path.resolve(__dirname, "src/composables"),
 			"@Components": path.resolve(__dirname, "src/components"),
 			"@Utils": path.resolve(__dirname, "src/utils"),
+			"@Assets": path.resolve(__dirname, "./src/assets"),
 		},
 	},
 	plugins: [vue()],
