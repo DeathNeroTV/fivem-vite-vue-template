@@ -7,8 +7,7 @@ ui_page 'dist/index.html'
 
 files {
     'dist/index.html',
-    'dist/assets/**/*',
-    'dist/public/**/*'
+    'dist/assets/**/*'
 }
 
 client_scripts { 
