@@ -4,7 +4,7 @@
 	type InputType = "text" | "number" | "password";
 
 	const props = defineProps<{
-		modelValue: string | number;
+		modelValue: string | number | undefined;
 		type?: InputType;
 		label?: string;
 		disabled?: true;

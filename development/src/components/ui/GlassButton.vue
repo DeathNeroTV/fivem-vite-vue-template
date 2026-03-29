@@ -26,9 +26,11 @@
 
 <script setup lang="ts">
 	import { computed, ref } from "vue";
-	import type { VariantType } from "../../utils/types";
+	import type { VariantType } from "@Utils/types";
 
-	const audio = new Audio(new URL("../../../public/sounds/click.wav", import.meta.url).href);
+	import clickSound from "@Assets/sounds/click.wav";
+
+	const audio = new Audio(clickSound);
 
 	const isPlaying = ref<boolean>(false);
 
