@@ -16,7 +16,7 @@ export function useToast() {
         const toast = { id: id++, message, type };
         toasts.value.push(toast);
         setTimeout(() => {
-            toasts.value = toasts.value.filter((t) => t.id !== toast.id);
+            toasts.value = toasts.value.filter((t: Toast) => t.id !== toast.id);
         }, 5000);
     }
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 	import { onMounted, onUnmounted, ref } from "vue";
-	import { Config } from "@/utils/config";
+	import { Config } from "@Utils/config";
 	import { useNui } from "@Composables/useNui";
-import GlassNotify from "./components/ui/GlassNotify.vue";
+	import GlassNotify from "@Components/ui/GlassNotify.vue";
 	
 	const { send, listen } = useNui();
 	const isVisible = ref<boolean>(Config.debugUI);
