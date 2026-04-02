@@ -3,11 +3,10 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@Types/*": ["src/utils/*"],
 			"@Composables/*": ["src/composables/*"],
 			"@Components/*": ["src/components/*"],
-			"@Utils/*": ["src/utils/*"]
+			"@Utils/*": ["src/utils/*"],
+			"@Assets/*": ["src/assets/*"],
 		},
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 		"types": ["vite/client"],

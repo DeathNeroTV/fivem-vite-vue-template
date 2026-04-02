@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import { onMounted, onUnmounted, ref } from "vue";
-	import { Config } from "@Composables/config";
+	import { Config } from "@/utils/config";
 	import { useNui } from "@Composables/useNui";
 import GlassNotify from "./components/ui/GlassNotify.vue";
 	
