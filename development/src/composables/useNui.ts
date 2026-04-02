@@ -1,66 +1,79 @@
-export type NuiRequest<T = any> = {
-	action: string;
-	data?: any;
-	resolve?: (value: T) => void;
-	reject?: (reason?: any) => void;
-};
+import { onMounted, onUnmounted } from "vue";
+import { Config } from "@Utils/config";
 
-export type NuiListener<T = any> = (data: T) => void;
+type NuiCallback<T = any> = (data: T) => void;
 
-const listeners = new Map<string, Set<NuiListener>>();
+const listeners = new Map<string, Set<NuiCallback>>();
 
 declare function GetParentResourceName(): string;
 
+function registerListener<T>(event: string, cb: NuiCallback<T>) {
+	if (!listeners.has(event)) {
+		listeners.set(event, new Set());
+	}
+	listeners.get(event)!.add(cb);
+}
+
+function unregisterListener<T>(event: string, cb: NuiCallback<T>) {
+	listeners.get(event)?.delete(cb);
+}
+
+function handleMessage(event: MessageEvent) {
+	const { action, data } = event.data;
+
+	if (!action) return;
+
+	if (Config.debugUI) {
+		console.log("[NUI RECEIVE]", action, data);
+	}
+
+	const cbs = listeners.get(action);
+	if (!cbs) return;
+
+	for (const cb of cbs) {
+		cb(data);
+	}
+}
+
 export function useNui() {
-	// 🔌 SEND (mit Response Support)
-	async function send<T = any>(action: string, data: any = {}): Promise<T> {
-		try {
-			const res = await fetch(`https://${GetParentResourceName()}/${action}`, {
+	onMounted(() => {
+		window.addEventListener("message", handleMessage);
+	});
+
+	onUnmounted(() => {
+		window.removeEventListener("message", handleMessage);
+	});
+
+	function send<T = any>(event: string, data?: any): Promise<T> {
+		if (Config.debugUI) {
+			console.log("[NUI SEND]", event, data);
+		}
+
+		return new Promise((resolve, reject) => {
+			fetch(`https://${GetParentResourceName()}/${event}`, {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(data ?? {}),
-			});
-
-			if (!res.ok) {
-				throw new Error(`NUI Error: ${res.status}`);
-			}
-
-			return await res.json();
-		} catch (err) {
-			console.error(`[NUI SEND ERROR] ${action}`, err);
-			throw err;
-		}
-	}
-
-	// 👂 LISTEN (ohne Memory Leak)
-	function listen<T = any>(action: string, cb: NuiListener<T>) {
-		if (!listeners.has(action)) {
-			listeners.set(action, new Set());
-		}
-
-		listeners.get(action)!.add(cb);
-
-		// unsubscribe support
-		return () => {
-			listeners.get(action)?.delete(cb);
-		};
-	}
-
-	// 🌐 GLOBAL HANDLER (einmal registrieren!)
-	if (!(window as any).__nui_listener__) {
-		window.addEventListener("message", (event) => {
-			const { action, data } = event.data;
-
-			if (!action) return;
-
-			const cbs = listeners.get(action);
-			if (!cbs) return;
-
-			cbs.forEach((cb) => cb(data));
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data || {}),
+			})
+				.then((res) => res.json())
+				.then(resolve)
+				.catch(reject);
 		});
-
-		(window as any).__nui_listener__ = true;
 	}
 
-	return { send, listen };
+	function on<T = any>(event: string, cb: NuiCallback<T>) {
+		registerListener(event, cb);
+	}
+
+	function off<T = any>(event: string, cb: NuiCallback<T>) {
+		unregisterListener(event, cb);
+	}
+
+	return {
+		send,
+		on,
+		off,
+	};
 }

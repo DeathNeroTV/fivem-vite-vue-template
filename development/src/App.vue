@@ -4,32 +4,29 @@
 	import { useNui } from "@Composables/useNui";
 	import GlassNotify from "@Components/ui/GlassNotify.vue";
 	
-	const { send, listen } = useNui();
+	const nui = useNui();
 	const isVisible = ref<boolean>(Config.debugUI);
-
-	const openListener = ref<() => void>(() => {});
-	const closeListener = ref<() => void>(() => {});
 	
 	const handleKeyPress = (e: KeyboardEvent) => {
 		if (e.key !== 'Escape') return;
-		send(Config.Events.Client.Close)
+		nui.send(Config.Events.Client.Close)
 	};
 	
 	onMounted(() => {
-		openListener.value = listen(Config.Events.NUI.Open, () => isVisible.value = true);
-		closeListener.value = listen(Config.Events.NUI.Close, () => isVisible.value = false);
+		nui.on(Config.Events.NUI.Open, () => isVisible.value = true);
+		nui.on(Config.Events.NUI.Close, () => isVisible.value = false);
 		window.addEventListener('keydown', handleKeyPress);
 	});
 
 	onUnmounted(() => {
-		openListener.value();
-		closeListener.value();
+		nui.off(Config.Events.NUI.Open, () => isVisible.value = true);
+		nui.off(Config.Events.NUI.Close, () => isVisible.value = false);
 		window.removeEventListener('keydown', handleKeyPress);
 	});
 </script>
 
 <template>
-	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white bg-black/60">
+	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white">
 		<GlassNotify />
 	</div>
 </template>
