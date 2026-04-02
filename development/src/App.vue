@@ -2,6 +2,7 @@
 	import { onMounted, onUnmounted, ref } from "vue";
 	import { Config } from "@Composables/config";
 	import { useNui } from "@Composables/useNui";
+import GlassNotify from "./components/ui/GlassNotify.vue";
 	
 	const { send, listen } = useNui();
 	const isVisible = ref<boolean>(Config.debugUI);
@@ -28,5 +29,7 @@
 </script>
 
 <template>
-	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white bg-black/60"></div>
+	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white bg-black/60">
+		<GlassNotify />
+	</div>
 </template>
