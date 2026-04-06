@@ -3,6 +3,9 @@ game 'gta5'
 author ''
 version ''
 
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
 ui_page 'dist/index.html'
 
 files {
@@ -11,6 +14,7 @@ files {
 }
 
 client_scripts { 
+    '@qbx_core/modules/playerdata.lua',
     'client/**/*.lua'
 }
 
@@ -21,5 +25,7 @@ server_scripts {
 
 shared_scripts { 
     '@ox_lib/init.lua',
+    '@qbx_core/modules/lib.lua',
+    'config.lua',
     'shared/**/*.lua'
 }
