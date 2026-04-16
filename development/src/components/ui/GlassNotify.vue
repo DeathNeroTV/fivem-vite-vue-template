@@ -1,20 +1,7 @@
 <script setup lang="ts">
 	import { useToast, type ToastType } from "@Composables/useToast";
 
-	const { toasts, remove } = useToast();
-
-	function getColor(type: ToastType) {
-		switch (type) {
-			case "success":
-				return "border-green-500/20 bg-green-500/10 text-green-400";
-			case "error":
-				return "border-red-500/20 bg-red-500/10 text-red-400";
-			case "warning":
-				return "border-yellow-500/20 bg-yellow-500/10 text-yellow-400";
-			default:
-				return "border-blue-500/20 bg-blue-500/10 text-blue-400";
-		}
-	}
+	const { toasts, remove, pause, resume } = useToast();
 
 	function getIcon(type: ToastType) {
 		switch (type) {
@@ -24,48 +11,49 @@
 				return "circle-xmark";
 			case "warning":
 				return "circle-exclamation";
-			case "info":
+			default:
 				return "circle-info";
 		}
 	}
 </script>
 
 <template>
-	<div class="pointer-events-none fixed top-6 right-6 z-999 flex w-65 flex-col gap-2">
-		<transition-group name="toast" tag="div">
+	<div class="absolute top-4 right-4 flex flex-col gap-2 z-999 pointer-events-none">
+		<transition-group name="toast" tag="div" class="flex flex-col gap-2">
 			<div
 				v-for="toast in toasts"
 				:key="toast.id"
-				class="group relative pointer-events-auto flex flex-col gap-2 rounded-xl border backdrop-blur-xl px-4 py-3 text-white shadow-[0_0_25px_rgba(0,0,0,0.5)] transition-all duration-300"
-				:class="getColor(toast.type)">
+				@mouseenter="pause(toast)"
+				@mouseleave="resume(toast)"
+				class="group relative w-65 px-3 py-2 rounded-xl backdrop-blur-xl border text-xs flex flex-col gap-2 pointer-events-auto transition-all duration-300 shadow-[0_0_25px_rgba(0,0,0,0.5)]"
+				:class="{
+					'bg-green-500/50 border-green-500/60 text-green-400': toast.type === 'success',
+					'bg-yellow-500/50 border-yellow-500/60 text-yellow-400': toast.type === 'warning',
+					'bg-red-500/50 border-red-500/60 text-red-400': toast.type === 'error',
+					'bg-blue-500/50 border-blue-500/60 text-blue-400': toast.type === 'info',
+				}">
 				<!-- Close -->
 				<button
-					@click="remove(toast.id)"
-					class="absolute top-1.5 right-2 text-white/30 hover:text-white text-xs transition">
+					@click="remove(toast.id!)"
+					class="absolute top-1 right-2 text-white/30 hover:text-white text-xs transition">
 					✕
 				</button>
 
 				<!-- Content -->
-				<div class="flex items-center gap-3 pr-4">
-					<!-- Icon -->
-					<font-awesome-icon :icon="getIcon(toast.type)" class="text-base opacity-80 shrink-0" />
+				<div class="flex items-start gap-2 pr-5">
+					<font-awesome-icon :icon="getIcon(toast.type)" class="text-sm opacity-80 mt-px shrink-0" />
 
-					<!-- Text -->
-					<span class="text-xs leading-snug wrap-break-word">
+					<div class="leading-snug wrap-break-word">
 						{{ toast.message }}
-					</span>
+					</div>
 				</div>
 
-				<!-- Timer Bar -->
-				<div class="w-full h-0.5 bg-white/5 rounded overflow-hidden">
+				<!-- Timer -->
+				<div class="w-full h-0.5 bg-neutral-900/50 rounded overflow-hidden">
 					<div
-						class="h-full bg-white/60 transition-[width] duration-100 ease-linear"
+						class="h-full bg-white/50 transition-[width] duration-100 ease-linear"
 						:style="{ width: toast.progress + '%' }" />
 				</div>
-
-				<!-- Hover Overlay -->
-				<div
-					class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-white/5 transition pointer-events-none" />
 			</div>
 		</transition-group>
 	</div>
@@ -74,10 +62,13 @@
 <style>
 	.toast-enter-from {
 		opacity: 0;
-		transform: translateX(40px) scale(0.98);
+		transform: translateX(40px) translateY(10px) scale(0.98);
 	}
 	.toast-enter-active {
 		transition: all 0.25s ease;
+	}
+	.toast-move {
+		transition: transform 0.25s ease;
 	}
 	.toast-leave-to {
 		opacity: 0;

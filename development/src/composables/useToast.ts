@@ -3,45 +3,66 @@ import { ref } from "vue";
 export type ToastType = "success" | "warning" | "error" | "info";
 
 export interface Toast {
-	id: number;
+	id?: number;
 	message: string;
 	type: ToastType;
-	duration: number;
-	progress: number;
+
+	duration?: number;
+	progress?: number;
+
+	// 🔥 neu
+	createdAt?: number;
+	paused?: boolean;
+	remaining?: number;
 }
 
 const toasts = ref<Toast[]>([]);
 let id = 0;
 
 export function useToast() {
-	function show(message: string, type: ToastType = "info", duration = 5000) {
-		const toast: Toast = {
+	function show(toast: Toast | string, type: ToastType = "info", duration = 5000) {
+		const normalized: Toast = typeof toast === "string" ? { message: toast, type, duration } : toast;
+
+		const full: Toast = {
+			...normalized,
 			id: id++,
-			message,
-			type,
-			duration,
+			duration: normalized.duration ?? 5000,
 			progress: 100,
 		};
 
-		// 🔥 Limit (kein Spam)
-		if (toasts.value.length >= 3) {
-			toasts.value.shift();
-		}
+		// Duplicate verhindern
+		const exists = toasts.value.some((t) => t.message === full.message);
+		if (exists) return;
 
-		toasts.value.push(toast);
+		toasts.value.push(full);
 
+		runTimer(full);
+	}
+
+	function runTimer(toast: Toast) {
 		const start = Date.now();
 
 		const interval = setInterval(() => {
+			if (toast.paused) return;
+
 			const elapsed = Date.now() - start;
+			const progress = 100 - (elapsed / toast.duration!) * 100;
 
-			toast.progress = 100 - (elapsed / duration) * 100;
+			toast.progress = Math.max(progress, 0);
 
-			if (elapsed >= duration) {
-				remove(toast.id);
+			if (elapsed >= toast.duration!) {
+				remove(toast.id!);
 				clearInterval(interval);
 			}
 		}, 50);
+	}
+
+	function pause(toast: Toast) {
+		toast.paused = true;
+	}
+
+	function resume(toast: Toast) {
+		toast.paused = false;
 	}
 
 	function remove(id: number) {
@@ -52,5 +73,7 @@ export function useToast() {
 		toasts,
 		show,
 		remove,
+		pause,
+		resume,
 	};
 }
