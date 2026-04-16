@@ -62,7 +62,7 @@
 			<!-- Selected -->
 			<div
 				@click="toggled = !toggled"
-				class="flex w-full cursor-pointer items-center justify-between rounded-2xl bg-neutral-800/20 px-4 py-2">
+				class="flex w-full cursor-pointer items-center justify-between rounded-2xl bg-neutral-800/60 px-4 py-2">
 				<span class="flex items-center gap-2">
 					<img v-if="selected?.image" :src="selected?.image" class="h-8 w-8 object-contain" />
 					{{ selected?.label ?? "Auswahl..." }}
@@ -74,12 +74,12 @@
 			<!-- 🔽 Dropdown -->
 			<div
 				v-if="toggled"
-				class="dropdown-scroll absolute z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-2xl bg-neutral-800/95 shadow-lg">
+				class="dropdown-scroll absolute z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-2xl bg-neutral-800/60 shadow-lg">
 				<div
 					v-for="option in normalizedOptions"
 					:key="option.value"
 					@click="select(option.value)"
-					class="flex w-full cursor-pointer items-center gap-3 px-4 py-2 transition hover:bg-green-600/30">
+					class="flex w-full cursor-pointer items-center gap-3 px-4 py-2 transition hover:bg-green-600/60">
 					<img v-if="option.image" :src="option.image" class="h-8 w-8 object-contain" />
 					<span>{{ option.label }}</span>
 				</div>
@@ -91,7 +91,7 @@
 			<img
 				:src="previewSrc"
 				alt="Marker Preview"
-				class="h-24 w-24 rounded-2xl bg-neutral-900/95 object-contain p-2" />
+				class="h-24 w-24 rounded-2xl bg-neutral-900/60 object-contain p-2" />
 		</div>
 	</div>
 </template>

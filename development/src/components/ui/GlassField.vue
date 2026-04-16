@@ -22,7 +22,7 @@
 
 <template>
 	<div
-		class="flex w-full h-full flex-col items-center rounded-xl outline-2 outline-neutral-700/40 bg-neutral-800/80 transition focus-within:outline-green-500/80"
+		class="flex w-full h-full flex-col items-center rounded-xl outline-2 outline-neutral-700/60 bg-neutral-800/60 transition focus-within:outline-green-500/80"
 		:class="center && 'items-center justify-center'">
 		<!-- 🔹 Label & Slider -->
 		<div class="flex items-center justify-between gap-2 py-2">
@@ -31,7 +31,7 @@
 		</div>
 
 		<!-- 🔹 Divider -->
-		<div v-if="label" class="w-full border-t border-green-500/50"></div>
+		<div v-if="label" class="w-full border-t border-green-500/60"></div>
 
 		<!-- 🔹 Content -->
 		<slot />

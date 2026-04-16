@@ -48,7 +48,7 @@
 		<div class="flex gap-5 w-full items-center">
 			<!-- Value -->
 			<div
-				class="w-full text-lg bg-neutral-800/90 border border-neutral-700/80 rounded-xl px-3 py-2 outline-none transition">
+				class="w-full text-lg bg-neutral-800/60 border border-neutral-700/60 rounded-xl px-3 py-2 outline-none transition">
 				{{ displayValue }}
 			</div>
 

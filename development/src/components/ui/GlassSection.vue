@@ -10,6 +10,6 @@
 		<div class="items-center justify-center gap-5 p-5" :class="[columns ? 'grid grid-cols-1' : 'flex']">
 			<slot />
 		</div>
-		<div class="w-full border-t-2 border-neutral-600/95 pb-5"></div>
+		<div class="w-full border-t-2 border-neutral-600/60 pb-5"></div>
 	</div>
 </template>

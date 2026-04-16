@@ -62,14 +62,14 @@
             @pointerleave="onPointerUp"
         >
             <!-- 🔹 Track -->
-            <div class="absolute inset-0 rounded-full bg-neutral-700/95"></div>
+            <div class="absolute inset-0 rounded-full bg-neutral-700/60"></div>
 
             <!-- 🔹 Progress -->
-            <div class="absolute inset-y-0 left-0 rounded-full bg-green-500/95" :style="{ width: percentage + '%' }"></div>
+            <div class="absolute inset-y-0 left-0 rounded-full bg-green-500/60" :style="{ width: percentage + '%' }"></div>
 
             <!-- 🔹 Thumb -->
             <div
-                class="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border-2 border-neutral-200/95 bg-green-500/95 shadow"
+                class="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full ring-2 ring-neutral-200/60 bg-green-500/60 shadow"
                 :style="{ left: `calc(${percentage}% - 10px)` }"
             ></div>
         </div>

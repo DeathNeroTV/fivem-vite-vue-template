@@ -41,6 +41,6 @@
 			:value="modelValue"
 			:disabled="disabled"
 			@input="onInput"
-			class="w-full bg-neutral-800/90 border border-neutral-700/80 rounded-xl px-3 py-2 text-md outline-none transition focus:border-green-500/90 focus:ring-1 focus:ring-green-500/50 disabled:opacity-50 disabled:cursor-not-allowed" />
+			class="w-full bg-neutral-800/60 border border-neutral-700/60 rounded-xl px-3 py-2 text-md outline-none transition focus:border-green-500/60 focus:ring-1 focus:ring-green-500/60 disabled:cursor-not-allowed" />
 	</div>
 </template>

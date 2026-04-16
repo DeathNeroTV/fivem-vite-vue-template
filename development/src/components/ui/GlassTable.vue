@@ -88,7 +88,7 @@
 				<GlassSelect
 					v-model="perPage"
 					:options="pageOptions"
-					class="rounded-xl bg-neutral-700/95 hover:bg-green-600/30" />
+					class="rounded-xl bg-neutral-700/60 hover:bg-green-600/60" />
 			</div>
 			<div class="flex w-full items-center justify-end gap-2">
 				<font-awesome-icon
@@ -100,7 +100,7 @@
 					v-model="search"
 					type="text"
 					placeholder="Suchen..."
-					class="w-64 rounded-xl bg-neutral-700/50 px-4 py-2 text-white outline-none placeholder:text-neutral-400" />
+					class="w-64 rounded-xl bg-neutral-700/60 px-4 py-2 text-white outline-none placeholder:text-neutral-400" />
 				<div class="flex items-end gap-2"><slot name="actions" /></div>
 			</div>
 		</div>
@@ -109,7 +109,7 @@
 		<div class="flex w-full h-full flex-col rounded-xl relative overflow-hidden">
 			<!-- Header -->
 			<div
-				class="flex w-full h-14 bg-neutral-800/50 rounded-t-xl text-sm text-neutral-300 items-center uppercase sticky top-0 z-10">
+				class="flex w-full h-14 bg-neutral-800/60 rounded-t-xl text-sm text-neutral-300 items-center uppercase sticky top-0 z-10">
 				<div
 					v-for="col in columns"
 					:key="col.key"
@@ -128,11 +128,11 @@
 			</div>
 
 			<!-- Scrollbarer Body -->
-			<div class="flex flex-col w-full h-full overflow-hidden overflow-y-auto rounded-b-xl bg-neutral-800/95">
+			<div class="flex flex-col w-full h-full overflow-hidden overflow-y-auto rounded-b-xl bg-neutral-800/60">
 				<div
 					v-for="row in paginatedData"
 					:key="row[idKey]"
-					class="flex w-full h-14 text-center items-center cursor-pointer odd:bg-neutral-700/95 even:bg-neutral-600/95 hover:bg-green-500/20"
+					class="flex w-full h-14 text-center items-center cursor-pointer odd:bg-neutral-700/60 even:bg-neutral-600/60 hover:bg-green-500/60"
 					@dblclick="emits('rowDblclick', row)">
 					<div v-for="col in columns" :key="col.key" class="flex-1 px-4 py-2 text-center">
 						{{ col.format ? col.format(row) : row[col.key] }}

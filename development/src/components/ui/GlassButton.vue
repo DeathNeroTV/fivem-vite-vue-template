@@ -53,48 +53,48 @@
 		switch (props.variant) {
 			case "neutral":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-neutral-600/95"
-					: "bg-neutral-700/95 hover:bg-neutral-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-neutral-600/60"
+					: "bg-neutral-700/95 hover:bg-neutral-600/60";
 			case "neutral-green":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-green-600/95"
-					: "bg-neutral-700/95 hover:bg-green-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-green-600/60"
+					: "bg-neutral-700/95 hover:bg-green-600/60";
 			case "neutral-blue":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-blue-600/95"
-					: "bg-neutral-700/95 hover:bg-blue-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-blue-600/60"
+					: "bg-neutral-700/95 hover:bg-blue-600/60";
 			case "neutral-orange":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-orange-600/95"
-					: "bg-neutral-700/95 hover:bg-orange-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-orange-600/60"
+					: "bg-neutral-700/95 hover:bg-orange-600/60";
 			case "neutral-yellow":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-yellow-600/95"
-					: "bg-neutral-700/95 hover:bg-yellow-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-yellow-600/60"
+					: "bg-neutral-700/95 hover:bg-yellow-600/60";
 			case "neutral-red":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-red-600/95"
-					: "bg-neutral-700/95 hover:bg-red-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-red-600/60"
+					: "bg-neutral-700/95 hover:bg-red-600/60";
 			case "blue":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-blue-600/95"
-					: "bg-blue-700/95 hover:bg-blue-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-blue-600/60"
+					: "bg-blue-700/95 hover:bg-blue-600/60";
 			case "green":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-green-600/95"
-					: "bg-green-700/95 hover:bg-green-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-green-600/60"
+					: "bg-green-700/95 hover:bg-green-600/60";
 			case "orange":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-orange-600/95"
-					: "bg-blue-700/95 hover:bg-orange-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-orange-600/60"
+					: "bg-blue-700/95 hover:bg-orange-600/60";
 			case "red":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-red-600/95"
-					: "bg-blue-700/95 hover:bg-red-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-red-600/60"
+					: "bg-blue-700/95 hover:bg-red-600/60";
 			case "yellow":
 				return props.selected
-					? "inset-ring-2 inset-ring-neutral-500 bg-yellow-600/95"
-					: "bg-blue-700/95 hover:bg-yellow-600/95";
+					? "inset-ring-2 inset-ring-neutral-500 bg-yellow-600/60"
+					: "bg-blue-700/95 hover:bg-yellow-600/60";
 		}
 	});
 
