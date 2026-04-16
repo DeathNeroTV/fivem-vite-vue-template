@@ -7,7 +7,7 @@
 		leftLabel?: string;
 		rightLabel?: string;
 		colored?: true;
-		disabled?: true;
+		disabled?: boolean;
 	}>();
 
 	const emits = defineEmits<{

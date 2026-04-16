@@ -41,7 +41,7 @@
 		spacing: string;
 		rounded: string;
 		variant: VariantType;
-		disabled?: true;
+		disabled?: boolean;
 		selected?: boolean;
 	}>();
 
