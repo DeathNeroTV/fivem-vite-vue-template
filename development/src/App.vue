@@ -26,7 +26,7 @@
 </script>
 
 <template>
-	<div v-if="isVisible" class="w-screen h-screen flex items-center justify-center text-white">
+	<div v-show="isVisible" class="w-screen h-screen flex items-center justify-center text-white">
 		<GlassNotify />
 	</div>
 </template>
