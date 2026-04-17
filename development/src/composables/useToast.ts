@@ -40,17 +40,23 @@ export function useToast() {
 	}
 
 	function runTimer(toast: Toast) {
-		const start = Date.now();
+		let start = Date.now();
 
 		const interval = setInterval(() => {
-			if (toast.paused) return;
+			if (toast.paused) {
+				start = Date.now() - (toast.duration! - toast.remaining!);
+				return;
+			}
 
 			const elapsed = Date.now() - start;
-			const progress = 100 - (elapsed / toast.duration!) * 100;
 
-			toast.progress = Math.max(progress, 0);
+			toast.remaining = Math.max(toast.duration! - elapsed, 0);
+			toast.progress = (toast.remaining / toast.duration!) * 100;
 
-			if (elapsed >= toast.duration!) {
+			// 🔥 Vue reactivity fix (wichtig!)
+			toasts.value = [...toasts.value];
+
+			if (toast.remaining <= 0) {
 				remove(toast.id!);
 				clearInterval(interval);
 			}
