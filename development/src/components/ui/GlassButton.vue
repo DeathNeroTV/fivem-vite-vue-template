@@ -3,7 +3,7 @@
 		<!-- 🔹 Tooltip -->
 		<div
 			v-if="tooltip && !disabled"
-			class="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 -translate-x-1/2 rounded-2xl bg-neutral-950/60 px-3 py-1 whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:opacity-100">
+			class="z-9999 pointer-events-none absolute top-full left-1/2 mb-2 -translate-x-1/2 rounded-2xl bg-neutral-950/60 px-3 py-1 whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:opacity-100">
 			{{ tooltip }}
 		</div>
 
