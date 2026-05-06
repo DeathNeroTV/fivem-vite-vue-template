@@ -4,8 +4,13 @@
 		"paths": {
 			"@Composables/*": ["./src/composables/*"],
 			"@Components/*": ["./src/components/*"],
+			"@Plugins/*": ["./src/plugins/*"],
 			"@Utils/*": ["./src/utils/*"],
-			"@Assets/*": ["./src/assets/*"],
+			"@Types/*": ["./src/types/*"],
+			"@Stores/*": ["./src/stores/*"],
+			"@Views/*": ["./src/views/*"],
+			"@Mocks/*": ["./src/mocks/*"],
+			"@Assets/*": ["./src/assets/*"]
 		},
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 		"types": ["vite/client"],
