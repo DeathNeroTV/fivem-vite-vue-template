@@ -1,12 +1,11 @@
-import type { Config } from "tailwindcss";
-
+/** @type {import('tailwindcss').Config} */
 export default {
-	content: ["./index.html", "./src/**/*.{vue,ts,js,jsx,tsx}"],
+	content: [],
 	theme: {
 		extend: {
 			animation: {
-				fadein: "fadeIn .5s ease-in-out",
-				fadeout: "fadeOut .5s ease-in-out",
+				fadein: 'fadeIn .5s ease-in-out',
+				fadeout: 'fadeOut .5s ease-in-out',
 			},
 			keyframes: {
 				fadeIn: {
@@ -21,4 +20,5 @@ export default {
 		},
 	},
 	plugins: [],
-} satisfies Config;
+}
+
